@@ -1,4 +1,5 @@
 from turtle import Screen
+import turtle
 import time
 from paddle import Paddle
 from ball import Ball
@@ -17,8 +18,18 @@ screen.onkey(paddle.left, "Left")
 screen.onkey(paddle.right, "Right")
 
 ball = Ball()
-
 bricks = []
+
+l_msg = turtle.Turtle()
+l_msg.hideturtle()
+l_msg.penup()
+l_msg.color("red")
+
+v_msg = turtle.Turtle()
+v_msg.hideturtle()
+v_msg.penup()
+v_msg.color("green")
+
 
 for row in range(5):
     for col in range(9):
@@ -53,7 +64,22 @@ while keep_playing:
 
     if len(bricks) == 0:
         keep_playing = False
+        l_msg.goto(0, 0)
+        l_msg.write(
+            "YOU WON!",
+            align="center",
+            font=("Arial", 24, "bold"),
+        )
+
+
     if ball.ycor() < -330:
         keep_playing = False
+
+        l_msg.goto(0, 0)
+        l_msg.write(
+            "YOU LOST!",
+            align="center",
+            font=("Arial", 24, "bold"),
+        )
 
 screen.exitonclick()
