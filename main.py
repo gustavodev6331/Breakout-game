@@ -1,7 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
-
+from brick import Brick
 
 screen = Screen()
 screen.bgcolor("black")
@@ -15,6 +15,7 @@ screen.onkey(paddle.left, "Left")
 screen.onkey(paddle.right, "Right")
 
 ball = Ball()
+brick = Brick()
 
 while True:
     ball.ball_move()
