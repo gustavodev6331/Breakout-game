@@ -28,10 +28,9 @@ for row in range(5):
 
         bricks.append(brick)
 
+keep_playing = True
 
-
-
-while True:
+while keep_playing:
     ball.ball_move()
     screen.update()
     time.sleep(0.05)
@@ -52,6 +51,9 @@ while True:
             ball.bounce_y()
             break
 
-
+    if len(bricks) == 0:
+        keep_playing = False
+    if ball.ycor() < -330:
+        keep_playing = False
 
 screen.exitonclick()
