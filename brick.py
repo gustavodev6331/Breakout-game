@@ -10,7 +10,7 @@ class Brick(Turtle):
         super().__init__()
         self.shape("square")
         self.color(random.choice(brick_color))
-        self.turtlesize(*random.choice(brick_size))
+        self.turtlesize(1,4)
         self.penup()
         self.goto(position)
 
