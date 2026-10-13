@@ -20,15 +20,11 @@ screen.onkey(paddle.right, "Right")
 ball = Ball()
 bricks = []
 
-l_msg = turtle.Turtle()
-l_msg.hideturtle()
-l_msg.penup()
-l_msg.color("red")
+msg = turtle.Turtle()
+msg.hideturtle()
+msg.penup()
+msg.color("red")
 
-v_msg = turtle.Turtle()
-v_msg.hideturtle()
-v_msg.penup()
-v_msg.color("green")
 
 
 for row in range(5):
@@ -52,34 +48,38 @@ while keep_playing:
     if ball.ycor() > 330:
         ball.bounce_y()
 
-    if ball.distance(paddle) < 50:
+    if ball.distance(paddle) < 50 and ball.y_move < 0:
         ball.bounce_y()
 
     for brick in bricks[:]:
-        if ball.distance(brick) < 20:
+        x_distance = abs(ball.xcor() - brick.xcor())
+        y_distance = abs(ball.ycor() - brick.ycor())
+        if ball.distance(brick) < 40:
+            if y_distance < x_distance:
+                ball.bounce_x()
+            else:
+                ball.bounce_y()
             brick.hideturtle()
             bricks.remove(brick)
-            ball.bounce_y()
             break
 
     if len(bricks) == 0:
         keep_playing = False
-        l_msg.goto(0, 0)
-        l_msg.write(
-            "YOU WON!",
-            align="center",
-            font=("Arial", 24, "bold"),
-        )
+        result = "win"
 
 
     if ball.ycor() < -330:
         keep_playing = False
+        result = "lose"
 
-        l_msg.goto(0, 0)
-        l_msg.write(
-            "YOU LOST!",
-            align="center",
-            font=("Arial", 24, "bold"),
-        )
+
+if result == "win":
+    msg.color("green")
+    msg.write("YOU WON!", align="center", font=("Arial", 24, "bold"))
+
+elif result == "lose":
+    msg.color("red")
+    msg.write("YOU LOST!", align="center", font=("Arial", 24, "bold"))
+
 
 screen.exitonclick()
