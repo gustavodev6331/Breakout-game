@@ -12,6 +12,7 @@ class Ball(Turtle):
         self.penup()
         self.goto(x=0, y=-250)
 
+
         self.x_move, self.y_move = random.choice(start_ball_move)
 
     def ball_move(self):
