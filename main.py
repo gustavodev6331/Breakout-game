@@ -4,6 +4,7 @@ import time
 from paddle import Paddle
 from ball import Ball
 from brick import Brick
+from scoreboard import Scoreboard
 
 screen = Screen()
 screen.tracer(0)
@@ -19,6 +20,7 @@ screen.onkey(paddle.right, "Right")
 
 ball = Ball()
 bricks = []
+
 
 msg = turtle.Turtle()
 msg.hideturtle()
@@ -36,6 +38,8 @@ for row in range(5):
         bricks.append(brick)
 
 keep_playing = True
+
+scoreboard = Scoreboard()
 
 while keep_playing:
     ball.ball_move()
@@ -61,6 +65,7 @@ while keep_playing:
                 ball.bounce_y()
             brick.hideturtle()
             bricks.remove(brick)
+            scoreboard.increase_score()
             break
 
     if len(bricks) == 0:
@@ -68,18 +73,18 @@ while keep_playing:
         result = "win"
 
 
-    if ball.ycor() < -330:
+    elif ball.ycor() < -330:
         keep_playing = False
         result = "lose"
 
 
 if result == "win":
     msg.color("green")
-    msg.write("YOU WON!", align="center", font=("Arial", 24, "bold"))
+    msg.write(f"YOU WON!\nYour final score is: {scoreboard.score}", align="center", font=("Arial", 24, "bold"))
 
 elif result == "lose":
     msg.color("red")
-    msg.write("YOU LOST!", align="center", font=("Arial", 24, "bold"))
+    msg.write(f"YOU LOST!\nYour final score is: {scoreboard.score}", align="center", font=("Arial", 24, "bold"))
 
 
 screen.exitonclick()
