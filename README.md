@@ -2,6 +2,13 @@
 
 A classic Breakout arcade game built with Python and Turtle. Control the paddle to bounce the ball, destroy all the bricks, and earn points without letting the ball fall off the screen.
 
+<img width="999" height="724" alt="Screenshot 2026-10-13 at 7 31 51 PM" src="https://github.com/user-attachments/assets/fb4ab1bc-cf12-4d21-a0e5-29d017a0cd75" />
+
+<img width="996" height="723" alt="Screenshot 2026-10-14 at 6 56 18 PM" src="https://github.com/user-attachments/assets/f5556738-c110-44f9-b668-baba63d21ddc" />
+
+<img width="993" height="726" alt="Screenshot 2026-10-14 at 6 57 07 PM" src="https://github.com/user-attachments/assets/0d9b071b-685c-45b4-94b0-ce58efbfa56a" />
+
+
 ## Features
 
 * **Paddle Controls:** Move the paddle left and right using the arrow keys.
